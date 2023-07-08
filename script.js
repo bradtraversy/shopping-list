@@ -33,7 +33,7 @@ function onAddItemSubmit(e) {
     isEditMode = false;
   } else {
     if (checkIfItemExists(newItem)) {
-      alert('That item already exists!');
+      alert(`The item "${newItem}" already exists!`);
       return;
     }
   }
@@ -100,7 +100,7 @@ function getItemsFromStorage() {
 function onClickItem(e) {
   if (e.target.parentElement.classList.contains('remove-item')) {
     removeItem(e.target.parentElement.parentElement);
-  }else if (e.target.closest("li")) {
+  } else if (e.target.closest('li')) {
     setItemToEdit(e.target);
   }
 }
