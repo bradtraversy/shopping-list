@@ -124,7 +124,9 @@ function setItemToEdit(item) {
 }
 
 function removeItem(item) {
-  if (confirm('Are you sure?')) {
+  if (
+    confirm(`Are you sure you want to remove the item "${item.textContent}"?`)
+  ) {
     // Remove item from DOM
     item.remove();
 
