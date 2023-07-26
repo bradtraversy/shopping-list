@@ -15,7 +15,8 @@ function displayItems() {
 function onAddItemSubmit(e) {
   e.preventDefault();
 
-  const newItem = itemInput.value;
+  // trim the input value to remove whitespace - disallowing duplicate items due to white space in the process
+  const newItem = itemInput.value.trim();
 
   // Validate Input
   if (newItem === '') {
@@ -33,7 +34,7 @@ function onAddItemSubmit(e) {
     isEditMode = false;
   } else {
     if (checkIfItemExists(newItem)) {
-      alert('That item already exists!');
+      alert(`The item "${newItem}" already exists!`);
       return;
     }
   }
@@ -100,7 +101,7 @@ function getItemsFromStorage() {
 function onClickItem(e) {
   if (e.target.parentElement.classList.contains('remove-item')) {
     removeItem(e.target.parentElement.parentElement);
-  }else if (e.target.closest("li")) {
+  } else if (e.target.closest('li')) {
     setItemToEdit(e.target);
   }
 }
@@ -124,7 +125,9 @@ function setItemToEdit(item) {
 }
 
 function removeItem(item) {
-  if (confirm('Are you sure?')) {
+  if (
+    confirm(`Are you sure you want to remove the item "${item.textContent}"?`)
+  ) {
     // Remove item from DOM
     item.remove();
 
