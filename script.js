@@ -1,25 +1,35 @@
-function createListItem(item) {
-  const li = document.createElement('li');
-  li.innerHTML = `${item}
-  <button class="remove-item btn-link text-red">
-    <i class="fa-solid fa-xmark"></i>
-  </button>`
-  document.querySelector('.items').appendChild(li);
-}
-function createNewItem(item) {
-  const li = document.createElement('li');
-  const button = document.createElement('button');
-  button.className = "remove-item btn-link text-red";
-  const i = document.createElement('i');
-  i.className = "fa-solid fa-xmark";
-  button.appendChild(i)
-  li.appendChild(document.createTextNode(item))
-  li.appendChild(button);
+function replaceFirstItem() {
+  const firstItem = document.querySelector('li');
 
-  document.querySelector('.items').appendChild(li);
+  const li = document.createElement('li');
+  li.textContent = 'Replaced First';
+
+  firstItem.replaceWith(li);
 }
-function createButton(classes) {
+replaceFirstItem();
+
+function replaceSecondItem() {
+  const secondItem = document.querySelector('li:nth-child(2)');
+
+  secondItem.outerHTML = '<li>Replaced</li>';
+}
+replaceSecondItem();
+
+function replaceAll() {
+  const all = document.querySelectorAll('li');
+
+  all.forEach((value, index) => value.outerHTML = index === 1 ? '<li>hello</li>' : '<li>hi</li>');
+}
+replaceAll();
+
+function replaceHeaderTag() {
+  const header = document.querySelector('header');
+  const h1 = document.querySelector('header h1');
+
+  const h2 = document.createElement('h2');
+  h2.textContent = 'Shopping List';
+  h2.id = 'hi'
   
+  header.replaceChild(h2, h1);
 }
- createListItem('eggs');
-createNewItem('Cheese');
+replaceHeaderTag();
