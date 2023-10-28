@@ -1,32 +1,26 @@
-const logo = document.querySelector('img');
 
-const onClick = () => console.log('click event');
-const onRightClick = () => console.log('right click event');
-const onMouseDown = () => console.log('mouse down event');
-const onMouseup = () => console.log('mouse up event');
-const onMouseWheel = () => console.log('mouse wheel event');
-const onMouseover = () => console.log('mouse over event');
-const onMouseout = () => console.log('mouse out event');
-const onDragStart = () => console.log('Drag start event');
-const onDrag = () => console.log('Drag event');
-const onDragEnd = () => console.log('Drag end event');
-const onDoubleClick = () => {
-  if (document.body.style.backgroundColor != 'purple') {
-    document.body.style.backgroundColor = 'purple';
-  }
-  else {
-    document.body.style.backgroundColor = 'white';
-  }
+const link = document.querySelector('a');
+const logo = document.querySelector('img');
+function onClick(e) {
+  // console.log(e.target);
+  // console.log(e.currentTarget);
+  // console.log(e.screenX);
+  // console.log(e.screenY);
+  // console.log(e.offsetX);
+  // console.log(e.offsetY);
+  // console.log(e.pageX);
+  // console.log(e.pageY);
+  // console.log(e.clientX);
+  // console.log(e.clientY);
+  e.preventDefault();
+  console.log('prevented');
 }
-//Event Listeners
-logo.addEventListener('click', onClick);
-logo.addEventListener('dblclick', onDoubleClick);
-logo.addEventListener('contextmenu', onRightClick);
-logo.addEventListener('mousedown', onMouseDown);
-logo.addEventListener('mouseup', onMouseup);
-logo.addEventListener('wheel', onMouseWheel);
-logo.addEventListener('mouseover', onMouseover);
-logo.addEventListener('mouseout', onMouseout);
-logo.addEventListener('dragstart', onDragStart);
+function onDrag(e) {
+  document.querySelector('h1').innerText = `X ${e.clientX} Y ${e.clientY}`;
+}
 logo.addEventListener('drag', onDrag);
-logo.addEventListener('dragend', onDragEnd);
+link.addEventListener('click', onClick);
+// document.body.addEventListener('click', function (e) {
+//   console.log(e.target);
+//   console.log(e.currentTarget);
+// })
