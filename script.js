@@ -1,26 +1,28 @@
+const itemInput = document.getElementById('item-input');
 
-const link = document.querySelector('a');
-const logo = document.querySelector('img');
-function onClick(e) {
-  // console.log(e.target);
-  // console.log(e.currentTarget);
-  // console.log(e.screenX);
-  // console.log(e.screenY);
-  // console.log(e.offsetX);
-  // console.log(e.offsetY);
-  // console.log(e.pageX);
-  // console.log(e.pageY);
-  // console.log(e.clientX);
-  // console.log(e.clientY);
-  e.preventDefault();
-  console.log('prevented');
+const onKeyPress = e => console.log('key pressed');
+const onKeyUp = e => console.log('key Up');
+const onKeyDown = e => {
+  //console.log(e.key);  
+  //document.querySelector('h1').innerText = (document.querySelector('h1').innerText + e.key);
+  // if (e.key === 'Enter') {
+  //   alert('You pressed enter');
+  // }
+  // if (e.keyCode === 13) {
+  //   alert("you pressed enter");
+  // }
+  // if (e.code === 'Digit1') {
+  //   console.log('you pressed 1');
+  // }
+  if (e.repeat) {
+    console.log("you are holding down " + e.key);
+  }
+  console.log('Shift: ' + e.shiftKey);
+  console.log('Control: ' + e.ctrlKey);
+  console.log('Alt: ' + e.altKey);
+
 }
-function onDrag(e) {
-  document.querySelector('h1').innerText = `X ${e.clientX} Y ${e.clientY}`;
-}
-logo.addEventListener('drag', onDrag);
-link.addEventListener('click', onClick);
-// document.body.addEventListener('click', function (e) {
-//   console.log(e.target);
-//   console.log(e.currentTarget);
-// })
+
+// itemInput.addEventListener('keypress', onKeyPress);
+itemInput.addEventListener('keydown', onKeyDown);
+// itemInput.addEventListener('keyup', onKeyUp);
